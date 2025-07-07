@@ -1,10 +1,13 @@
 import { Plus, X } from "lucide-react";
 import usePageStore from "../../stores/pageStore";
+import useNoteStore from "../../stores/noteStore";
 import AppLogo from "../common/AppLogo";
 import SearchBar from "../common/SearchBar";
+import NoteList from "./NoteList";
 
-function Aside({ selectedNote }: { selectedNote: boolean }) {
+export default function Aside({ selectedNote }: { selectedNote: boolean }) {
   const { isSidebarOpen, setIsSidebarOpen } = usePageStore();
+  const { addNote } = useNoteStore();
 
   return (
     <aside
@@ -35,7 +38,10 @@ function Aside({ selectedNote }: { selectedNote: boolean }) {
             </div>
           </div>
           {/* Add New Note */}
-          <button className="bg-gradient-primary hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl text-xs sm:text-sm px-2 sm:px-4 flex p-2 text-white items-center">
+          <button
+            onClick={() => addNote()}
+            className="bg-gradient-primary hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl text-xs sm:text-sm px-2 sm:px-4 flex p-2 text-white items-center"
+          >
             <Plus className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-2" />
             <span className="hidden sm:inline">Tambah</span>
           </button>
@@ -47,8 +53,8 @@ function Aside({ selectedNote }: { selectedNote: boolean }) {
         {/* Search */}
         <SearchBar />
       </div>
+
+      <NoteList />
     </aside>
   );
 }
-
-export default Aside;

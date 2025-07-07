@@ -2,7 +2,7 @@ import { Menu } from "lucide-react";
 import Aside from "./components/layout/Aside";
 import usePageStore from "./stores/pageStore";
 
-function App() {
+export default function App() {
   const { isSidebarOpen, setIsSidebarOpen } = usePageStore();
 
   return (
@@ -18,5 +18,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
