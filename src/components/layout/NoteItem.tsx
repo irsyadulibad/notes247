@@ -1,5 +1,5 @@
 import type { Note } from "../../types/note";
-import { Calendar, Clock, MoreVertical } from "lucide-react";
+import { Calendar, Clock, MoreVertical, Pin } from "lucide-react";
 import Card from "../common/Card";
 import useNoteStore from "../../stores/noteStore";
 import {
@@ -8,7 +8,9 @@ import {
   subString,
   getNoteBackgroundColor,
   getNoteBorderColor,
+  getWordCount,
 } from "../../lib/utils";
+import Badge from "./Badge";
 
 export default function NoteItem({
   note,
@@ -36,8 +38,11 @@ export default function NoteItem({
     >
       <div className="flex items-start justify-between mb-2 sm:mb-3">
         <div className="flex items-center gap-1 sm:gap-2">
+          {note.isPinned && (
+            <Pin className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 fill-current" />
+          )}
           <h3 className="font-semibold text-gray-900 truncate flex-1 text-sm sm:text-lg">
-            {emptyString(note.title, "Tanpa Judul")}
+            {subString(emptyString(note.title, "Tanpa Judul"), 28)}
           </h3>
         </div>
 
@@ -63,9 +68,9 @@ export default function NoteItem({
             {formatDate(note.updatedAt, "HH:mm")}
           </div>
         </div>
-        <span className="text-xs bg-white/75 backdrop-blur-sm border border-gray-100/50 rounded-full px-2 sm:px-3 py-0.5">
-          {note.content?.length ?? 0} Kata
-        </span>
+        <Badge className="bg-white/75 backdrop-blur-sm border border-gray-100/50 rounded-full px-2 sm:px-3 py-0.5">
+          {getWordCount(note.content || "")} Kata
+        </Badge>
       </div>
     </Card>
   );

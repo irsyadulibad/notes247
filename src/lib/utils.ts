@@ -12,6 +12,10 @@ export function subString(text: string, maxLength: number): string {
   return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
 }
 
+export function getWordCount(text: string): number {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
 export function formatDate(date: Date | string, format: string): string {
   return dayjs(date).locale("id").format(format);
 }

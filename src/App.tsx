@@ -1,8 +1,8 @@
 import Aside from "./components/layout/Aside";
-import NoteContent from "./components/layout/NoteContent";
-import NoteHeader from "./components/layout/NoteHeader";
-import useNoteStore from "./stores/noteStore";
 import EmptyNote from "./components/features/EmptyNote";
+import NoteContent from "./components/features/NoteContent";
+import NoteHeader from "./components/features/NoteHeader";
+import useNoteStore from "./stores/noteStore";
 
 export default function App() {
   const { selectedNote } = useNoteStore();

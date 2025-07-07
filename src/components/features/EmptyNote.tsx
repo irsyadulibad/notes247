@@ -8,7 +8,6 @@ export default function EmptyNote() {
 
   return (
     <div className="flex-1 flex items-center justify-center p-4">
-      {/* Mobile Menu Button */}
       <button
         onClick={() => setIsSidebarOpen(true)}
         className="fixed top-4 left-4 z-30 lg:hidden bg-white/80 backdrop-blur-sm"
