@@ -20,7 +20,9 @@ export default function NoteList() {
           </p>
         </div>
       ) : (
-        notes.map((note) => <NoteItem key={note.id} note={note} />)
+        notes.map((note, index) => (
+          <NoteItem key={note.id} note={note} index={index} />
+        ))
       )}
     </div>
   );

@@ -1,11 +1,39 @@
 import type { Note } from "../../types/note";
 import { Calendar, Clock, MoreVertical } from "lucide-react";
 import Card from "../common/Card";
-import { emptyString, formatDate, subString } from "../../lib/utils";
+import useNoteStore from "../../stores/noteStore";
+import {
+  emptyString,
+  formatDate,
+  subString,
+  getNoteBackgroundColor,
+  getNoteBorderColor,
+} from "../../lib/utils";
 
-export default function NoteItem({ note }: { note: Note }) {
+export default function NoteItem({
+  note,
+  index,
+}: {
+  note: Note;
+  index: number;
+}) {
+  const { selectedNote, setSelectedNote } = useNoteStore();
+  const isSelected = selectedNote?.id === note.id;
+  const baseColor = getNoteBackgroundColor(index);
+  const borderColor = getNoteBorderColor(index);
+
+  const handleClick = () => {
+    setSelectedNote(note);
+  };
+
   return (
-    <Card key={note.id} className="bg-blue-100">
+    <Card
+      key={note.id}
+      className={`${baseColor} ${
+        isSelected ? `${borderColor} border-2` : ""
+      } cursor-pointer hover:shadow-md transition-all duration-200`}
+      onClick={handleClick}
+    >
       <div className="flex items-start justify-between mb-2 sm:mb-3">
         <div className="flex items-center gap-1 sm:gap-2">
           <h3 className="font-semibold text-gray-900 truncate flex-1 text-sm sm:text-lg">

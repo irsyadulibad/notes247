@@ -1,20 +1,25 @@
-import { Menu } from "lucide-react";
 import Aside from "./components/layout/Aside";
-import usePageStore from "./stores/pageStore";
+import NoteContent from "./components/layout/NoteContent";
+import NoteHeader from "./components/layout/NoteHeader";
+import useNoteStore from "./stores/noteStore";
+import EmptyNote from "./components/features/EmptyNote";
 
 export default function App() {
-  const { isSidebarOpen, setIsSidebarOpen } = usePageStore();
+  const { selectedNote } = useNoteStore();
 
   return (
     <div className="flex h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Aside selectedNote={false} />
-
-      <button
-        className="fixed top-4 left-4 z-30 lg:hidden bg-white/80 backdrop-blur-sm"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      >
-        <Menu size={24} />
-      </button>
+      <main className="flex-1 flex flex-col min-w-0">
+        {selectedNote ? (
+          <>
+            <NoteHeader />
+            <NoteContent />
+          </>
+        ) : (
+          <EmptyNote />
+        )}
+      </main>
     </div>
   );
 }
