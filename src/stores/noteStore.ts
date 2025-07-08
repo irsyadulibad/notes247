@@ -110,6 +110,10 @@ const useNoteStore = create<NoteState>()(
     {
       name: "notes",
       storage: createJSONStorage(() => localStorage),
+      partialize: (state) => {
+        const { notes } = state;
+        return { notes };
+      },
     }
   )
 );

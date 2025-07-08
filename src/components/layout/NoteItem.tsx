@@ -49,10 +49,6 @@ export default function NoteItem({
             {subString(emptyString(note.title, "Tanpa Judul"), 22)}
           </h3>
         </div>
-
-        <div className="flex items-center gap-1">
-          <MoreVertical size={16} className="text-gray-400" />
-        </div>
       </div>
 
       <p className="text-gray-600 line-clamp-2 sm:line-clamp-3 mb-3 sm:mb-4 leading-relaxed text-xs sm:text-sm">
