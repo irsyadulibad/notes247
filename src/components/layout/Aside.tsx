@@ -7,7 +7,7 @@ import NoteList from "./NoteList";
 
 export default function Aside({ selectedNote }: { selectedNote: boolean }) {
   const { isSidebarOpen, setIsSidebarOpen } = usePageStore();
-  const { addNote } = useNoteStore();
+  const { addNote, notes } = useNoteStore();
 
   return (
     <aside
@@ -34,7 +34,9 @@ export default function Aside({ selectedNote }: { selectedNote: boolean }) {
               <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
                 Notes 247
               </h1>
-              <p className="text-xs sm:text-sm text-gray-500">5 notes</p>
+              <p className="text-xs sm:text-sm text-gray-500">
+                {notes?.length || 0} catatan
+              </p>
             </div>
           </div>
           {/* Add New Note */}
