@@ -42,7 +42,7 @@ export default function NoteItem({
             <Pin className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 fill-current" />
           )}
           <h3 className="font-semibold text-gray-900 truncate flex-1 text-sm sm:text-lg">
-            {subString(emptyString(note.title, "Tanpa Judul"), 28)}
+            {subString(emptyString(note.title, "Tanpa Judul"), 22)}
           </h3>
         </div>
 

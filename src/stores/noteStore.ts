@@ -1,10 +1,12 @@
 import { create } from "zustand";
 import type { Note } from "../types/note";
 import { createJSONStorage, persist } from "zustand/middleware";
+import usePageStore from "./pageStore";
 
 interface NoteState {
   notes: Note[];
   selectedNote: Note | null;
+  getNotes: () => Note[];
   addNote: () => Note;
   updateNote: (note: Note) => Note;
   deleteNote: (id: string) => void;
@@ -14,9 +16,33 @@ interface NoteState {
 
 const useNoteStore = create<NoteState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       notes: [] as Note[],
       selectedNote: null,
+
+      getNotes: () => {
+        const keyword = usePageStore.getState().searchKeyword.toLowerCase();
+        const notes = get().notes;
+
+        const sortedNotes = [...notes].sort((a, b) => {
+          if (a.isPinned && !b.isPinned) return -1;
+          if (!a.isPinned && b.isPinned) return 1;
+
+          return (
+            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+          );
+        });
+
+        if (keyword) {
+          return sortedNotes.filter(
+            (note) =>
+              note.title?.toLowerCase().includes(keyword) ||
+              note.content?.toLowerCase().includes(keyword)
+          );
+        }
+
+        return sortedNotes;
+      },
 
       addNote: () => {
         const note = {
