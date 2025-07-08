@@ -11,6 +11,7 @@ import {
   getWordCount,
 } from "../../lib/utils";
 import Badge from "./Badge";
+import usePageStore from "../../stores/pageStore";
 
 export default function NoteItem({
   note,
@@ -20,11 +21,14 @@ export default function NoteItem({
   index: number;
 }) {
   const { selectedNote, setSelectedNote } = useNoteStore();
+  const { setIsSidebarOpen } = usePageStore();
+
   const isSelected = selectedNote?.id === note.id;
   const baseColor = getNoteBackgroundColor(index);
   const borderColor = getNoteBorderColor(index);
 
   const handleClick = () => {
+    setIsSidebarOpen(false);
     setSelectedNote(note);
   };
 
