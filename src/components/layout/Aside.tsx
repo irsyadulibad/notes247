@@ -38,16 +38,21 @@ export default function Aside({ selectedNote }: { selectedNote: boolean }) {
             </div>
           </div>
           {/* Add New Note */}
-          <button
-            onClick={() => addNote()}
-            className="bg-gradient-primary hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl text-xs sm:text-sm px-2 sm:px-4 flex p-2 text-white items-center"
-          >
-            <Plus className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-2" />
-            <span className="hidden sm:inline">Tambah</span>
-          </button>
-          <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden">
-            <X className="w-4 h-4" />
-          </button>
+          <div className="flex gap-4">
+            <button
+              onClick={() => addNote()}
+              className="bg-gradient-primary hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200 rounded-xl text-xs sm:text-sm px-2 sm:px-4 flex p-2 text-white items-center"
+            >
+              <Plus className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-2" />
+              <span className="hidden sm:inline">Tambah</span>
+            </button>
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="lg:hidden"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Search */}

@@ -4,6 +4,7 @@ import NoteContent from "./components/features/NoteContent";
 import NoteHeader from "./components/features/NoteHeader";
 import useNoteStore from "./stores/noteStore";
 import usePageStore from "./stores/pageStore";
+import GithubLink from "./components/common/GithubLink";
 
 export default function App() {
   const { selectedNote } = useNoteStore();
@@ -29,6 +30,8 @@ export default function App() {
           <EmptyNote />
         )}
       </main>
+
+      <GithubLink />
     </div>
   );
 }

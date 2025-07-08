@@ -24,7 +24,7 @@ export default function EmptyNote() {
         </h2>
         <p className="text-gray-600 mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed px-4">
           Pilih catatan dari sidebar untuk membaca, atau buat catatan baru untuk
-          memulai menulis.
+          mulai menulis.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
           <button

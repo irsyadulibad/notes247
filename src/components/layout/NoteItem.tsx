@@ -1,5 +1,5 @@
 import type { Note } from "../../types/note";
-import { Calendar, Clock, MoreVertical, Pin } from "lucide-react";
+import { Calendar, Clock, Pin } from "lucide-react";
 import Card from "../common/Card";
 import useNoteStore from "../../stores/noteStore";
 import {
