@@ -65,7 +65,7 @@ export default function NoteItem({
           </div>
           <div className="hidden sm:flex items-center gap-1 text-gray-500">
             <Clock className="w-3 h-3" />
-            {formatDate(note.updatedAt, "HH:mm")}
+            {formatDate(note.createdAt, "HH:mm")}
           </div>
         </div>
         <Badge className="bg-white/75 backdrop-blur-sm border border-gray-100/50 rounded-full px-2 sm:px-3 py-0.5">
